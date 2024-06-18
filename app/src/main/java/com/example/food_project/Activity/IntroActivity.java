@@ -13,7 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.food_project.R;
 import com.example.food_project.databinding.ActivityIntroBinding;
-
+//ádfsdfsdf
 public class IntroActivity extends BaseActivity {
 
     ActivityIntroBinding binding;
