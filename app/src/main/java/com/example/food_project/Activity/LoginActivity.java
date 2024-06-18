@@ -65,6 +65,10 @@ public class LoginActivity extends BaseActivity {
                                         UserDetail userDetail = snapshot.getValue(UserDetail.class);
                                         if(userDetail != null){
                                             String userName = userDetail.getNameEdt();
+                                            Intent i = new Intent(LoginActivity.this,MainActivity.class);
+                                            i.putExtra("userName",userName);
+                                            startActivity(i);
+                                            finish();
                                         }
                                     }
                                 }
