@@ -19,24 +19,21 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 
+//Khai báo lớp LoginActivity kế thừa từ BaseActivity.
+// Điều này có nghĩa là LoginActivity sẽ thừa hưởng tất cả các biến và phương thức từ BaseActivity.
 public class LoginActivity extends BaseActivity {
+//    sử dụng View Binding để truy cập các thành phần giao diện người dùng trong layout activity_login.xml
     ActivityLoginBinding binding;
     Button login_btn;
 
     @Override
+//     Phương thức onCreate được gọi khi Activity được tạo. Nó thường được sử dụng để thực hiện các thao tác khởi tạo.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
 
         login_btn = findViewById(R.id.loginBtn);
-        //EdgeToEdge.enable(this);
         setContentView(binding.getRoot());
-//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-//            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-//            return insets;
-//        });
-
         setVariable();
     }
 
