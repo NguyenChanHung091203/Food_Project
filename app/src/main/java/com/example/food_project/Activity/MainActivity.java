@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -33,6 +34,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends BaseActivity {
     private ActivityMainBinding binding;
+    private TextView txtName;
 
 
     @Override
@@ -46,13 +48,10 @@ public class MainActivity extends BaseActivity {
 //            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
 //            return insets;
 //        });
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if(user !=null){
-            String userName = user.getDisplayName();
-            if(userName == null || userName.isEmpty()){
-                userName = "User";
-            }
-            binding.txtName.setText("Welcome, " + userName + "!");
+        txtName = findViewById(R.id.txtName);
+        String userName = getIntent().getStringExtra("userName");
+        if(userName!=null) {
+            txtName.setText(userName);
         }
 
         initLocation();

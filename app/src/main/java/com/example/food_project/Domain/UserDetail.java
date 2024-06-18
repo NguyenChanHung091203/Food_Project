@@ -7,6 +7,10 @@ public class UserDetail {
     public String emailEdt;
     public String passEdt;
 
+    public UserDetail() {
+
+    }
+
     public UserDetail(String nameEdt, String emailEdt, String passEdt) {
         this.nameEdt = nameEdt;
         this.emailEdt = emailEdt;
