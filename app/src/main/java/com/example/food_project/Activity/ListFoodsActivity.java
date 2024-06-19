@@ -31,17 +31,24 @@ import java.util.List;
 
 public class ListFoodsActivity extends BaseActivity {
 
+//    Sử dụng View Binding để truy cập các thành phần giao diện người dùng trong layout activity_list_foods.xml
     ActivityListFoodsBinding binding;
+//    Biến adapterListFood đại diện cho adapter của RecyclerView.
     private Adapter apdapterListFood;
+//    Các biến categoryId, categoryName, searchText, isSearch được sử dụng để lưu trữ dữ liệu nhận từ Intent
     private int categoryId;
     private String categoryName;
     private String searchText;
     private boolean isSearch;
 
     @Override
+//    Phương thức này được gọi khi Activity được tạo.
     protected void onCreate(Bundle savedInstanceState) {
+//        Gọi phương thức onCreate của lớp cha để đảm bảo các hành vi mặc định được thực hiện.
         super.onCreate(savedInstanceState);
+//        Sử dụng View Binding để khởi tạo binding.
         binding = ActivityListFoodsBinding.inflate(getLayoutInflater());
+//        Đặt nội dung giao diện người dùng bằng gốc của binding.
         setContentView(binding.getRoot());
 
         getIntentExtra();
@@ -91,10 +98,13 @@ public class ListFoodsActivity extends BaseActivity {
 //    }
 
     private void initList() {
+//        Tham chiếu đến "Foods" trong cơ sở dữ liệu Firebase.
         DatabaseReference myRef = database.getReference("Foods");
+//        Hiển thị ProgressBar trong khi tải dữ liệu
         binding.progressBar.setVisibility(View.VISIBLE);
+//        Tạo một danh sách trống để lưu trữ các đối tượng Foods.
         ArrayList<Foods> list = new ArrayList<>();
-
+//      Khai báo biến query để thực hiện truy vấn
         Query query;
         if (isSearch) {
             query = myRef.orderByChild("Title").startAt(searchText).endAt(searchText + '\uf8ff');
@@ -104,7 +114,9 @@ public class ListFoodsActivity extends BaseActivity {
 
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
+//             Phương thức này được gọi khi có dữ liệu từ truy vấn.
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                Kiểm tra nếu có dữ liệu
                 if (snapshot.exists()) {
                     for (DataSnapshot issue : snapshot.getChildren()) {
                         list.add(issue.getValue(Foods.class));
