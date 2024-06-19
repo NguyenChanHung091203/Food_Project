@@ -2,10 +2,7 @@
     <string name="app_name">Food_Project</string>
     <string name="welcome_to_food_app">Welcome to Food App</string>
     <string name="shared_and_delighful_for_an_easy_and_enjoyable_food">Shared and delighful, for an easy and enjoyable food</string>
-<<<<<<< HEAD
-=======
     <string name="signup">Signup</string>
->>>>>>> c79ff618b9fd9fcf6360c523d4176a5b173f42d9
     <string name="login">Login</string>
     <string name="food">Food</string>
     <string name="app">App</string>
