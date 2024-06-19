@@ -87,7 +87,11 @@
                 android:layout_height="wrap_content"
                 android:text="@string/forget_password"
                 android:textSize="16sp"
+<<<<<<< HEAD
                 android:layout_marginTop="16dp"
+=======
+                android:layout_marginTop="32dp"
+>>>>>>> c79ff618b9fd9fcf6360c523d4176a5b173f42d9
                 android:textAlignment="center"/>
 
             <androidx.appcompat.widget.AppCompatButton
@@ -96,7 +100,11 @@
                 android:layout_height="wrap_content"
                 android:text="Login"
                 android:background="@drawable/red_button_background"
+<<<<<<< HEAD
                 android:layout_margin="16dp"
+=======
+                android:layout_margin="32dp"
+>>>>>>> c79ff618b9fd9fcf6360c523d4176a5b173f42d9
                 style="@android:style/Widget.Button"
                 android:textColor="@color/white"
                 android:textSize="16sp"
@@ -137,7 +145,11 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+<<<<<<< HEAD
                 android:layout_margin="42dp"
+=======
+                android:layout_margin="32dp"
+>>>>>>> c79ff618b9fd9fcf6360c523d4176a5b173f42d9
                 android:orientation="horizontal">
 
                 <ImageView

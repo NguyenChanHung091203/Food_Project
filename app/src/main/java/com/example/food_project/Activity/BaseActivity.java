@@ -12,6 +12,7 @@ import com.example.food_project.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+<<<<<<< HEAD
 // AppCompatActivity để đảm bảo ứng dụng của bạn có thể chạy mượt mà trên nhiều phiên bản hệ điều hành khác nhau
 public class BaseActivity extends AppCompatActivity {
 
@@ -31,6 +32,18 @@ public String TAG = "Tam ne!";
 //        Khởi tạo đối tượng FirebaseAuth để làm việc với xác thực người dùng Firebase.
         mAuth = FirebaseAuth.getInstance();
 // Thiết lập màu của thanh trạng thái (status bar) thành màu trắng.
+=======
+public class BaseActivity extends AppCompatActivity {
+FirebaseAuth mAuth;
+FirebaseDatabase database;
+public String TAG = "Tam ne!";
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        database = FirebaseDatabase.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+
+>>>>>>> c79ff618b9fd9fcf6360c523d4176a5b173f42d9
         getWindow().setStatusBarColor(getResources().getColor(R.color.white));
 
     }
