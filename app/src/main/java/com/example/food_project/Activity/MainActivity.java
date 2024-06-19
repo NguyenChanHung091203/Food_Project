@@ -2,6 +2,7 @@ package com.example.food_project.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 
@@ -55,6 +56,7 @@ public class MainActivity extends BaseActivity {
 
         binding.searchBtn.setOnClickListener(v -> {
             String text = binding.searchEdt.getText().toString();
+            Log.d("MainActivity", "Search text: " + text); // Kiểm tra giá trị text
             if(!text.isEmpty()){
                 Intent intent = new Intent(MainActivity.this, ListFoodsActivity.class);
                 intent.putExtra("text", text);
