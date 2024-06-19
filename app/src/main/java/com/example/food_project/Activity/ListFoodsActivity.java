@@ -1,10 +1,7 @@
 package com.example.food_project.Activity;
 
 import android.os.Bundle;
-<<<<<<< HEAD
 import android.util.Log;
-=======
->>>>>>> c79ff618b9fd9fcf6360c523d4176a5b173f42d9
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
@@ -15,10 +12,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-<<<<<<< HEAD
 import androidx.recyclerview.widget.RecyclerView.Adapter;
-=======
->>>>>>> c79ff618b9fd9fcf6360c523d4176a5b173f42d9
 
 import com.example.food_project.Adapter.CategoryAdapter;
 import com.example.food_project.Adapter.FoodListAdapter;
@@ -37,21 +31,24 @@ import java.util.List;
 
 public class ListFoodsActivity extends BaseActivity {
 
+    //    Sử dụng View Binding để truy cập các thành phần giao diện người dùng trong layout activity_list_foods.xml
     ActivityListFoodsBinding binding;
-<<<<<<< HEAD
+    //    Biến adapterListFood đại diện cho adapter của RecyclerView.
     private Adapter apdapterListFood;
-=======
-    private RecyclerView.Adapter apdapterListFood;
->>>>>>> c79ff618b9fd9fcf6360c523d4176a5b173f42d9
+    //    Các biến categoryId, categoryName, searchText, isSearch được sử dụng để lưu trữ dữ liệu nhận từ Intent
     private int categoryId;
     private String categoryName;
     private String searchText;
     private boolean isSearch;
 
     @Override
+//    Phương thức này được gọi khi Activity được tạo.
     protected void onCreate(Bundle savedInstanceState) {
+//        Gọi phương thức onCreate của lớp cha để đảm bảo các hành vi mặc định được thực hiện.
         super.onCreate(savedInstanceState);
+//        Sử dụng View Binding để khởi tạo binding.
         binding = ActivityListFoodsBinding.inflate(getLayoutInflater());
+//        Đặt nội dung giao diện người dùng bằng gốc của binding.
         setContentView(binding.getRoot());
 
         getIntentExtra();
@@ -64,7 +61,6 @@ public class ListFoodsActivity extends BaseActivity {
     private void setVariable() {
     }
 
-<<<<<<< HEAD
 //    private void initList() {
 //        DatabaseReference myRef = database.getReference("Foods");
 //        binding.progressBar.setVisibility(View.VISIBLE);
@@ -101,15 +97,15 @@ public class ListFoodsActivity extends BaseActivity {
 //        }
 //    }
 
-=======
->>>>>>> c79ff618b9fd9fcf6360c523d4176a5b173f42d9
     private void initList() {
+//        Tham chiếu đến "Foods" trong cơ sở dữ liệu Firebase.
         DatabaseReference myRef = database.getReference("Foods");
+//        Hiển thị ProgressBar trong khi tải dữ liệu
         binding.progressBar.setVisibility(View.VISIBLE);
+//        Tạo một danh sách trống để lưu trữ các đối tượng Foods.
         ArrayList<Foods> list = new ArrayList<>();
-
+//      Khai báo biến query để thực hiện truy vấn
         Query query;
-<<<<<<< HEAD
         if (isSearch) {
             query = myRef.orderByChild("Title").startAt(searchText).endAt(searchText + '\uf8ff');
         } else {
@@ -118,7 +114,9 @@ public class ListFoodsActivity extends BaseActivity {
 
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
+//             Phương thức này được gọi khi có dữ liệu từ truy vấn.
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                Kiểm tra nếu có dữ liệu
                 if (snapshot.exists()) {
                     for (DataSnapshot issue : snapshot.getChildren()) {
                         list.add(issue.getValue(Foods.class));
@@ -148,42 +146,6 @@ public class ListFoodsActivity extends BaseActivity {
 
     private void getIntentExtra() {
         categoryId = getIntent().getIntExtra("CategoryId", 0);
-=======
-        if(isSearch){
-            query = myRef.orderByChild("Title").startAt(searchText).endAt(searchText + '\uf8ff');
-        }
-        else {
-            query = myRef.orderByChild("CategoryId").equalTo(categoryId);
-
-            query.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if (snapshot.exists()) {
-                        for (DataSnapshot issue : snapshot.getChildren()) {
-                            list.add(issue.getValue(Foods.class));
-                        }
-                        if (list.size() > 0) {
-                            binding.foodListView.setLayoutManager(new GridLayoutManager(ListFoodsActivity.this, 2));
-                            apdapterListFood = new FoodListAdapter(list);
-                            binding.foodListView.setAdapter(apdapterListFood);
-                        }
-                        binding.progressBar.setVisibility(View.GONE);
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
-        }
-    }
-
-
-    private void getIntentExtra() {
-        categoryId = getIntent().getIntExtra("CategoryId", 0);
-//        categoryId = 3;
->>>>>>> c79ff618b9fd9fcf6360c523d4176a5b173f42d9
         categoryName = getIntent().getStringExtra("CategoryName");
         searchText = getIntent().getStringExtra("text");
         isSearch = getIntent().getBooleanExtra("isSearch", false);
