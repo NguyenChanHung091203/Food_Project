@@ -19,4 +19,7 @@
     <string name="time">time</string>
     <string name="_0">$0</string>
     <string name="username">User Name</string>
+    <string name="facebook_app_id">404613822487477</string>
+    <string name="fb_login_protocol_scheme">fb404613822487477</string>
+    <string name="facebook_client_token">4ac97b184489f693414c1a7b8893aae3</string>
 </resources>
