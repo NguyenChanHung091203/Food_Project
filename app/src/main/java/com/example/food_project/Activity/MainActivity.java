@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -33,7 +34,6 @@ import java.util.ArrayList;
 public class MainActivity extends BaseActivity {
     private ActivityMainBinding binding;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +56,6 @@ public class MainActivity extends BaseActivity {
 
         binding.searchBtn.setOnClickListener(v -> {
             String text = binding.searchEdt.getText().toString();
-            Log.d("MainActivity", "Search text: " + text); // Kiểm tra giá trị text
             if(!text.isEmpty()){
                 Intent intent = new Intent(MainActivity.this, ListFoodsActivity.class);
                 intent.putExtra("text", text);
@@ -71,24 +70,42 @@ public class MainActivity extends BaseActivity {
                 startActivity(new Intent(MainActivity.this, CartActivity.class));
             }
         });
+
+        binding.viewAllTxt.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ListBestFoodsActivity.class));
+            }
+        });
     }
 
     private void initBestFood() {
+//        Thiết lập tham chiếu tới node "Foods" trong Firebase Realtime Database.
         DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("Foods");
+        // Show progress bar
         binding.progressBarBestFood.setVisibility(View.VISIBLE);
         ArrayList<Foods> list = new ArrayList<>();
+//        Tạo một truy vấn để tìm các món ăn có thuộc tính "BestFood" là true.
         Query query = myRef.orderByChild("BestFood").equalTo(true);
+//        Thêm ValueEventListener để lắng nghe một lần các thay đổi dữ liệu từ Firebase.
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
+//            Được gọi khi dữ liệu tại vị trí này thay đổi
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                Kiểm tra xem dữ liệu có tồn tại không.
                 if (snapshot.exists()) {
+//                    Lặp qua từng DataSnapshot và thêm đối tượng Foods vào danh sách
                     for (DataSnapshot issue : snapshot.getChildren()) {
                         list.add(issue.getValue(Foods.class));
                     }
 
                     if (list.size() > 0) {
+//                      Đây là ID của một thành phần giao diện người dùng (RecyclerView) trong file layout XML của bạn.
                         binding.bestFoodView.setLayoutManager(new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false));
+//                        Tạo adapter cho RecyclerView với danh sách Foods
                         RecyclerView.Adapter<BestFoodsAdapter.viewholder> adapter = new BestFoodsAdapter(list);
+//                        Gán adapter cho RecyclerView
                         binding.bestFoodView.setAdapter(adapter);
                     }
                     binding.progressBarBestFood.setVisibility(View.GONE);
