@@ -53,7 +53,7 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/editTextText"
+                    android:id="@+id/discount_Code_Txt"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:layout_marginEnd="8dp"
@@ -68,7 +68,7 @@
                     android:textSize="14sp" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/button"
+                    android:id="@+id/discountBtn"
                     style="@android:style/Widget.Button"
                     android:layout_width="145dp"
                     android:layout_height="40dp"
@@ -122,7 +122,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Total Tax"
+                    android:text="Discount"
                     app:layout_constraintStart_toStartOf="@+id/textView26"
                     app:layout_constraintTop_toBottomOf="@+id/textView26" />
 
@@ -147,7 +147,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/totalFeeTxt" />
 
                 <TextView
-                    android:id="@+id/taxTxt"
+                    android:id="@+id/discountTxt"
                     style="@style/textStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
