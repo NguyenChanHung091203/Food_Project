@@ -51,7 +51,7 @@ public class MainActivity extends BaseActivity {
         txtName = findViewById(R.id.txtName);
         String userName = getIntent().getStringExtra("userName");
         if(userName!=null) {
-            txtName.setText(userName);
+            txtName.setText("Welcome " + userName);
         }
 
         initLocation();
