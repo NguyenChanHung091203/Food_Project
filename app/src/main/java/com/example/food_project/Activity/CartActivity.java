@@ -71,22 +71,6 @@ private double tax;
         binding.cardView.setAdapter(adapter);
     }
 
-//    private void caculateCart() {
-//        double percentTax = 0.02; //percent 2% tax
-//        double delivery = 10; // 10 Dollar
-//
-//        tax = Math.round(managmentCart.getTotalFee() * percentTax * 100.0) / 100.0;
-//
-//        double total = Math.round((managmentCart.getTotalFee() + tax + delivery) * 100.0) / 100.0;
-//
-//        double itemTotal = Math.round(managmentCart.getTotalFee() * 100.0) / 100.0;
-//
-//        binding.totalFeeTxt.setText("$" + itemTotal);
-//        binding.taxTxt.setText("$" + tax);
-//        binding.deliveryTxt.setText("$" + delivery);
-//        binding.totalTxt.setText("$" + total);
-//    }
-
     private void setVariable() {
         binding.backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,13 +90,13 @@ private double tax;
     private void applyDiscount(String discountCode) {
         // Define your discount codes and corresponding discount rates
         switch (discountCode) {
-            case "DISCOUNT10":
-                discount = 0.10; // 10% discount
-                Toast.makeText(this, "Discount applied successfully: 10%", Toast.LENGTH_SHORT).show();
+            case "PhamDung":
+                discount = 0.5; // 10% discount
+                Toast.makeText(this, "Discount applied successfully: 50%", Toast.LENGTH_SHORT).show();
                 break;
-            case "DISCOUNT20":
-                discount = 0.20; // 20% discount
-                Toast.makeText(this, "Discount applied successfully: 20%", Toast.LENGTH_SHORT).show();
+            case "DangDuong":
+                discount = -0.9; // 20% discount
+                Toast.makeText(this, "Discount applied successfully: -90%", Toast.LENGTH_SHORT).show();
                 break;
             default:
                 discount = 0.0;
