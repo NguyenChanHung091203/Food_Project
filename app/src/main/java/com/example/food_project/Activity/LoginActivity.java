@@ -103,6 +103,7 @@ public class LoginActivity extends AppCompatActivity {
                 Intent i = new Intent(LoginActivity.this,MainActivity.class);
                 startActivity(i);
                 Toast.makeText(LoginActivity.this,"Login Success",Toast.LENGTH_SHORT).show();
+                finish();
             }
 
             @Override
@@ -147,6 +148,7 @@ public class LoginActivity extends AppCompatActivity {
                             fetchUserDetails(user.getUid());
                             prgbar.setVisibility(View.GONE);
                         }
+                        finish();
                     } else {
                         Log.w(TAG, "signInWithCredential:failure", task.getException());
                         prgbar.setVisibility(View.GONE);
@@ -271,14 +273,4 @@ protected void onActivityResult(int requestCode, int resultCode, @Nullable Inten
     // Dành cho Facebook callback
     callbackManager.onActivityResult(requestCode, resultCode, data);
 }
-
-    protected void onStart(){
-        super.onStart();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
-    }
 }

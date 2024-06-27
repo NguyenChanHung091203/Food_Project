@@ -99,10 +99,12 @@ public class SignupActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
                                 Toast.makeText(SignupActivity.this,"Register Successful",Toast.LENGTH_LONG).show();
+                                Intent i = new Intent(SignupActivity.this,LoginActivity.class);
+                                startActivity(i);
                             }
                         }
                     });
-                    startActivity(new Intent(SignupActivity.this, LoginActivity.class));
+
                 }else {
                     try {
                         throw task.getException();
@@ -122,36 +124,3 @@ public class SignupActivity extends AppCompatActivity {
         });
     }
 }
-
-//    private void setVariable() {
-//        binding.signupBtn.setOnClickListener(v -> {
-//            String name = binding.nameEdt.getText().toString();
-//            String email = binding.userEdt.getText().toString();
-//            String password = binding.passEdt.getText().toString();
-//
-//            if(password.length() < 6){
-//                Toast.makeText(SignupActivity.this, "Your password must be 6 character", Toast.LENGTH_SHORT).show();
-//                return;
-//            }
-//            FirebaseAuth auth = FirebaseAuth.getInstance();
-//            auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(SignupActivity.this, task -> {
-//                if(task.isSuccessful()){
-//                    Log.i(TAG, "onComplete");
-//                    FirebaseUser user = auth.getCurrentUser();
-//                    UserDetail UD = new UserDetail(name);
-//                    DatabaseReference drf = FirebaseDatabase.getInstance().getReference("Registered Users");
-//                    drf.child(user.getUid()).setValue(UD).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                        @Override
-//                        public void onComplete(@NonNull Task<Void> task) {
-//                            if(task.isSuccessful()){
-//                                Toast.makeText(SignupActivity.this,"Register Successful",Toast.LENGTH_LONG).show();
-//                            }
-//                        }
-//                    });
-//                    startActivity(new Intent(SignupActivity.this, LoginActivity.class));
-//                }else{
-//                    Log.i(TAG, "Failure: ", task.getException());
-//                    Toast.makeText(SignupActivity.this, "Authentication failed", Toast.LENGTH_SHORT).show();
-//                }
-//            });
-//        });
