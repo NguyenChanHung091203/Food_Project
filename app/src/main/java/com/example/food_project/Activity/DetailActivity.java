@@ -15,17 +15,25 @@ import com.example.food_project.Helper.ManagmentCart;
 import com.example.food_project.R;
 import com.example.food_project.databinding.ActivityDetailBinding;
 
+//Khai báo lớp DetailActivity mở rộng từ BaseActivity.
 public class DetailActivity extends BaseActivity {
+//    Khai báo biến binding cho view binding
     ActivityDetailBinding binding;
+//    Khai báo biến object kiểu Foods để lưu thông tin chi tiết món ăn
     private Foods object;
     private int num = 1;
     private ManagmentCart managmentCart;
 
+//    Ghi chú rằng phương thức này ghi đè một phương thức trong lớp cha
     @Override
+//    Phương thức onCreate, được gọi khi activity được tạo lần đầu.
     protected void onCreate(Bundle savedInstanceState) {
+//        Gọi phương thức onCreate của lớp cha
         super.onCreate(savedInstanceState);
+
         binding = ActivityDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+//        Đặt màu thanh trạng thái thành màu đen.
         getWindow().setStatusBarColor(getResources().getColor(R.color.black));
         getIntentExtra();
         setVariable();
@@ -40,7 +48,7 @@ public class DetailActivity extends BaseActivity {
                 finish();
             }
         });
-
+//         Tải hình ảnh vào ImageView sử dụng Glide.
         Glide.with(DetailActivity.this)
                 .load(object.getImagePath())
                 .into(binding.pic);
@@ -81,6 +89,7 @@ public class DetailActivity extends BaseActivity {
         });
     }
 
+//    Điều này có nghĩa là Foods đã được truyền qua Intent với key là "object", và bạn đang lấy đối tượng đó ra để sử dụng trong DetailActivity
     private void getIntentExtra() {
         object = (Foods) getIntent().getSerializableExtra("object");
     }

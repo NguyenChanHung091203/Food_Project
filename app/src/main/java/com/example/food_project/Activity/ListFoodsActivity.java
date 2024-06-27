@@ -31,11 +31,11 @@ import java.util.List;
 
 public class ListFoodsActivity extends BaseActivity {
 
-    //    Sử dụng View Binding để truy cập các thành phần giao diện người dùng trong layout activity_list_foods.xml
+//    Sử dụng View Binding để truy cập các thành phần giao diện người dùng trong layout activity_list_foods.xml
     ActivityListFoodsBinding binding;
-    //    Biến adapterListFood đại diện cho adapter của RecyclerView.
+//    Biến adapterListFood đại diện cho adapter của RecyclerView.
     private Adapter apdapterListFood;
-    //    Các biến categoryId, categoryName, searchText, isSearch được sử dụng để lưu trữ dữ liệu nhận từ Intent
+//    Các biến categoryId, categoryName, searchText, isSearch được sử dụng để lưu trữ dữ liệu nhận từ Intent
     private int categoryId;
     private String categoryName;
     private String searchText;
@@ -116,14 +116,18 @@ public class ListFoodsActivity extends BaseActivity {
             @Override
 //             Phương thức này được gọi khi có dữ liệu từ truy vấn.
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                Kiểm tra nếu có dữ liệu
+//                Kiểm tra xem dữ liệu có tồn tại tại nút được tham chiếu hay không.
                 if (snapshot.exists()) {
+//                    Lặp qua các kết quả và thêm vào danh sách list.
                     for (DataSnapshot issue : snapshot.getChildren()) {
                         list.add(issue.getValue(Foods.class));
                     }
                     if (list.size() > 0) {
+//                        Đặt LayoutManager cho RecyclerView để hiển thị các mục dưới dạng lưới với 2 cột.
                         binding.foodListView.setLayoutManager(new GridLayoutManager(ListFoodsActivity.this, 2));
+//                        Tạo adapter cho RecyclerView.
                         apdapterListFood = new FoodListAdapter(list);
+//                        Đặt adapter cho RecyclerView.
                         binding.foodListView.setAdapter(apdapterListFood);
                     }
                     binding.progressBar.setVisibility(View.GONE);
@@ -135,6 +139,7 @@ public class ListFoodsActivity extends BaseActivity {
             }
 
             @Override
+//            Phương thức này được gọi khi truy vấn bị hủy hoặc gặp lỗi.
             public void onCancelled(@NonNull DatabaseError error) {
                 Log.e("ListFoodsActivity", "Query cancelled or failed: " + error.getMessage());
                 binding.progressBar.setVisibility(View.GONE);
