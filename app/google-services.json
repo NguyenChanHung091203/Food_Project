@@ -13,7 +13,16 @@
           "package_name": "com.example.food_project"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1082668886534-hk18r8nab7t3r9i7f6ur6lfbjqn9h4bo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.food_project",
+            "certificate_hash": "88de912bcde17b48399c0bbb4a937f6ef1b25300"
+          }
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDIPI7ew1uNt_Nwl7us59PhthDNJVjVcPw"
