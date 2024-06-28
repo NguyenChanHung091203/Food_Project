@@ -24,6 +24,16 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp">
 
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnSetting"
+                    android:layout_width="29dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/setting"
+                    app:layout_constraintEnd_toStartOf="@+id/logoutBtn"
+                    app:layout_constraintTop_toTopOf="parent" />
+
                 <TextView
                     android:id="@+id/textView9"
                     android:layout_width="wrap_content"

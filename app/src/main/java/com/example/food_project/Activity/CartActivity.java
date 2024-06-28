@@ -1,5 +1,6 @@
 package com.example.food_project.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -83,6 +84,15 @@ private double tax;
             public void onClick(View v) {
                 String discountCode = binding.discountCodeTxt.getText().toString();
                 applyDiscount(discountCode);
+            }
+        });
+        binding.button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                double total = managmentCart.getTotalFee() + tax + 10;
+                Intent intent = new Intent(CartActivity.this, OrderPayment.class);
+                intent.putExtra("total", total);
+                startActivity(intent);
             }
         });
     }
