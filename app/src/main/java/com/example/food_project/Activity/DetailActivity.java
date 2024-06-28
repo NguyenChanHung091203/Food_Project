@@ -12,6 +12,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.bumptech.glide.Glide;
 import com.example.food_project.Domain.Foods;
 import com.example.food_project.Helper.ManagmentCart;
+import com.example.food_project.Helper.ManagmentWishList;
 import com.example.food_project.R;
 import com.example.food_project.databinding.ActivityDetailBinding;
 
@@ -23,6 +24,7 @@ public class DetailActivity extends BaseActivity {
     private Foods object;
     private int num = 1;
     private ManagmentCart managmentCart;
+    private ManagmentWishList managmentWishList;
 
 //    Ghi chú rằng phương thức này ghi đè một phương thức trong lớp cha
     @Override
@@ -41,7 +43,7 @@ public class DetailActivity extends BaseActivity {
 
     private void setVariable() {
         managmentCart = new ManagmentCart(this);
-
+        managmentWishList = new ManagmentWishList(this);
         binding.backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,6 +87,12 @@ public class DetailActivity extends BaseActivity {
             public void onClick(View v) {
                 object.setNumberInCart(num);
                 managmentCart.insertFood(object);
+            }
+        });
+        binding.favBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                managmentWishList.insertFoodWishList(object);
             }
         });
     }

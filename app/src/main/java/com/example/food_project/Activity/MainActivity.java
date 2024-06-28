@@ -87,6 +87,12 @@ public class MainActivity extends BaseActivity {
                 startActivity(new Intent(MainActivity.this, CartActivity.class));
             }
         });
+        binding.WishList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,WishListActivity.class));
+            }
+        });
 
         binding.viewAllTxt.setOnClickListener(new View.OnClickListener() {
 

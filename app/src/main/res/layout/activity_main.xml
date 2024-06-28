@@ -106,6 +106,14 @@
                 </LinearLayout>
 
                 <ImageView
+                    android:id="@+id/WishList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/grey_background"
+                    app:srcCompat="@drawable/favorite_white"
+                    tools:srcCompat="@drawable/favorite_white" />
+                <ImageView
                     android:id="@+id/cartBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
@@ -200,6 +208,7 @@
                         android:layout_weight="1"
                         android:background="@null" />
                 </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout

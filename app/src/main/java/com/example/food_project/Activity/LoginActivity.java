@@ -248,6 +248,7 @@ protected void onActivityResult(int requestCode, int resultCode, @Nullable Inten
                                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                         intent.putExtra("userName",userName);
                                         startActivity(intent);
+                                        Toast.makeText(LoginActivity.this,"Login Success",Toast.LENGTH_SHORT).show();
                                         finish();
                                     } else {
                                         Log.e("LoginActivity", "FirebaseUser is null after sign in.");
