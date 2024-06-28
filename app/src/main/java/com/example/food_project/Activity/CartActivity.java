@@ -2,6 +2,7 @@ package com.example.food_project.Activity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +22,7 @@ public class CartActivity extends BaseActivity {
 private ActivityCartBinding binding;
 private RecyclerView.Adapter adapter;
 private ManagmentCart managmentCart;
+private double discount = 0.0;
 private double tax;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +31,23 @@ private double tax;
         setContentView(binding.getRoot());
         managmentCart = new ManagmentCart(this);
         setVariable();
-        caculateCart();
+        calculateCart();
         initList();
+    }
+
+    private void calculateCart() {
+        double delivery = 10; // 10 Dollar delivery fee
+
+        double totalFee = managmentCart.getTotalFee();
+        double itemTotal = Math.round(totalFee * 100.0) / 100.0;
+        double discountAmount = Math.round(totalFee * discount * 100.0) / 100.0;
+
+        double total = Math.round((totalFee - discountAmount + delivery) * 100.0) / 100.0;
+
+        binding.totalFeeTxt.setText("$" + itemTotal);
+        binding.discountTxt.setText("$" + discountAmount);
+        binding.deliveryTxt.setText("$" + delivery);
+        binding.totalTxt.setText("$" + total);
     }
 
     private void initList() {
@@ -48,26 +65,10 @@ private double tax;
         adapter = new CartAdapter(managmentCart.getListCart(), this, new ChangeNumberItemsListener() {
             @Override
             public void change() {
-                caculateCart();
+                calculateCart();
             }
         });
         binding.cardView.setAdapter(adapter);
-    }
-
-    private void caculateCart() {
-        double percentTax = 0.02; //percent 2% tax
-        double delivery = 10; // 10 Dollar
-
-        tax = Math.round(managmentCart.getTotalFee() * percentTax * 100.0) / 100.0;
-
-        double total = Math.round((managmentCart.getTotalFee() + tax + delivery) * 100.0) / 100.0;
-
-        double itemTotal = Math.round(managmentCart.getTotalFee() * 100.0) / 100.0;
-
-        binding.totalFeeTxt.setText("$" + itemTotal);
-        binding.taxTxt.setText("$" + tax);
-        binding.deliveryTxt.setText("$" + delivery);
-        binding.totalTxt.setText("$" + total);
     }
 
     private void setVariable() {
@@ -77,5 +78,31 @@ private double tax;
                 finish();
             }
         });
+        binding.discountBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String discountCode = binding.discountCodeTxt.getText().toString();
+                applyDiscount(discountCode);
+            }
+        });
+    }
+
+    private void applyDiscount(String discountCode) {
+        // Define your discount codes and corresponding discount rates
+        switch (discountCode) {
+            case "PhamDung":
+                discount = 0.5; // 10% discount
+                Toast.makeText(this, "Discount applied successfully: 50%", Toast.LENGTH_SHORT).show();
+                break;
+            case "DangDuong":
+                discount = -0.9; // 20% discount
+                Toast.makeText(this, "Discount applied successfully: -90%", Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                discount = 0.0;
+                Toast.makeText(this, "Invalid discount code", Toast.LENGTH_SHORT).show();
+                break;
+        }
+        calculateCart();
     }
 }

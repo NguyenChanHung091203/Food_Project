@@ -10,11 +10,11 @@ import java.util.ArrayList;
 
 public class ManagmentCart {
     private Context context;
-    private TinyDB tinyDB;
+    private CartDB cartDB;
 
     public ManagmentCart(Context context) {
         this.context = context;
-        this.tinyDB=new TinyDB(context);
+        this.cartDB=new CartDB(context);
     }
 
     public void insertFood(Foods item) {
@@ -33,12 +33,12 @@ public class ManagmentCart {
         }else{
             listpop.add(item);
         }
-        tinyDB.putListObject("CartList",listpop);
+        cartDB.putListObject("CartList",listpop);
         Toast.makeText(context, "Added to your Cart", Toast.LENGTH_SHORT).show();
     }
 
     public ArrayList<Foods> getListCart() {
-        return tinyDB.getListObject("CartList");
+        return cartDB.getListObject("CartList");
     }
 
     public Double getTotalFee(){
@@ -55,12 +55,12 @@ public class ManagmentCart {
         }else{
             listItem.get(position).setNumberInCart(listItem.get(position).getNumberInCart()-1);
         }
-        tinyDB.putListObject("CartList",listItem);
+        cartDB.putListObject("CartList",listItem);
         changeNumberItemsListener.change();
     }
     public  void plusNumberItem(ArrayList<Foods> listItem,int position,ChangeNumberItemsListener changeNumberItemsListener){
         listItem.get(position).setNumberInCart(listItem.get(position).getNumberInCart()+1);
-        tinyDB.putListObject("CartList",listItem);
+        cartDB.putListObject("CartList",listItem);
         changeNumberItemsListener.change();
     }
 }
