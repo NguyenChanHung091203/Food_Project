@@ -23,7 +23,7 @@ public class WishListActivity extends AppCompatActivity {
         binding = ActivityWishlistBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         managmentWishList = new ManagmentWishList(this);
-        binding.backbtn.setOnClickListener(new View.OnClickListener() {
+        binding.backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
@@ -34,12 +34,7 @@ public class WishListActivity extends AppCompatActivity {
     }
 
     private void setVariable() {
-        binding.backbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
     }
 
     private void initList() {

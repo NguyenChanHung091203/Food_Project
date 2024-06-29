@@ -131,10 +131,12 @@ public class ListFoodsActivity extends BaseActivity {
                         binding.foodListView.setAdapter(apdapterListFood);
                     }
                     binding.progressBar.setVisibility(View.GONE);
+                    binding.noResultsTextView.setVisibility(View.GONE);
                 } else {
                     // Xử lý khi không tìm thấy kết quả
                     Log.d("ListFoodsActivity", "No results found");
                     binding.progressBar.setVisibility(View.GONE);
+                    binding.noResultsTextView.setVisibility(View.VISIBLE);
                 }
             }
 
