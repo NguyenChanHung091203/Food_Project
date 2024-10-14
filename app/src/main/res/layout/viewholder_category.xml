@@ -30,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="title"
+            android:text="Tiêu đề"
             android:textAlignment="center"
             android:textColor="@color/blue_grey"
             android:textSize="18sp" />

@@ -38,7 +38,7 @@
                     android:id="@+id/bestFood"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Best Food"
+                    android:text="Đồ ăn"
                     android:textSize="24sp"
                     android:textStyle="bold"
                     android:textColor="@color/blue_grey"

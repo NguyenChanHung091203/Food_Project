@@ -45,6 +45,7 @@ dependencies {
     implementation libs.firebase.database
     implementation libs.cardview
     implementation fileTree(dir: 'C:\\Users\\Duong\'s\\Downloads\\zalo', include: ['*.aar', '*.jar'], exclude: [])
+    implementation fileTree(dir: 'C:\\Users\\chanh\\Downloads\\ZaloPay', include: ['*.aar', '*.jar'], exclude: [])
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core

@@ -32,7 +32,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Order Payment"
+            android:text="Hóa đơn thanh toán"
             android:textAlignment="center"
             android:textColor="@color/blue_grey"
             android:textSize="24sp"
@@ -63,7 +63,7 @@
                     style="@style/textStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Name: " />
+                    android:text="Tên: " />
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtName"
@@ -166,7 +166,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:background="@color/red"
-        android:text="Order now"
+        android:text="Đặt hàng ngay"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -182,7 +182,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="#006AF5"
-        android:text="Pay with zalopay"
+        android:text="Thanh toán bằng zalopay"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"

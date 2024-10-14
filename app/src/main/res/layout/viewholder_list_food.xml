@@ -35,7 +35,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:text="Title"
+                android:text="Tiêu đề"
                 android:textColor="@color/blue_grey"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -48,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="time"
+                android:text="Thời gian"
 
                 app:layout_constraintStart_toStartOf="@+id/titleTxt"
                 app:layout_constraintTop_toBottomOf="@+id/titleTxt" />
@@ -69,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="16dp"
-                android:text="$0"
+                android:text="0k"
                 android:textColor="@color/red"
                 android:textSize="18sp"
                 android:textStyle="bold"
